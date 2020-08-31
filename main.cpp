@@ -123,7 +123,7 @@ void edit_with_option(Person *person, int edit_choice, string changed_value)
     cout << "\nEditing successful !!!";
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
     Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
     Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
