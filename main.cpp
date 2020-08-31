@@ -58,7 +58,16 @@ class Address_Book
 public:
     void add_person(Person *person)
     {
-        address_book.push_back(person);
+        bool exist_flag = false;
+        for (Person *temp_person : address_book)
+            if (temp_person->get_first_name() == person->get_first_name() &&
+                temp_person->get_last_name() == person->get_last_name())
+            {
+                cout << "\nPerson Already Exists !!!";
+                exist_flag = true;
+            }
+        if (!exist_flag)
+            address_book.push_back(person);
     }
 
     void edit_person(string first_name, string last_name)
@@ -127,6 +136,7 @@ int main()
 {
     Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
     Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
+    Person person3("Shashank", "Joshi", "Kokan", "Mahabal", "Maha", "431005", "9175927280");
     Address_Book address_book;
 
     cout << "Welcone to address book\n";
@@ -142,6 +152,7 @@ int main()
     address_book.display_records();
 
     address_book.edit_person("Sudhanshu", "Ghinmine");
+    address_book.add_person(&person3);
 
     return 0;
 }
