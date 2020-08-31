@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -38,10 +39,35 @@ public:
     }
 };
 
+class Address_Book
+{
+    vector<Person> address_book;
+
+public:
+    void add_person(Person &person)
+    {
+        address_book.push_back(person);
+    }
+
+    void display_records()
+    {
+        for (Person person : address_book)
+            cout << person.to_string();
+    }
+};
+
 int main(int argc, char const *argv[])
 {
     Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
-    cout << "Welcone to address book";
-    cout << person1.to_string();
+    Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
+    Address_Book address_book;
+
+    cout << "Welcone to address book\n";
+
+    address_book.add_person(person1);
+    address_book.add_person(person2);
+
+    address_book.display_records();
+
     return 0;
 }
