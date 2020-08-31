@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -53,7 +53,7 @@ public:
 
 class Address_Book
 {
-    vector<Person *> address_book;
+    list<Person *> address_book;
 
 public:
     void add_person(Person *person)
@@ -65,16 +65,29 @@ public:
     {
         bool edit_flag = false;
         for (Person *person : address_book)
-        {
             if (first_name == person->get_first_name() && last_name == person->get_last_name())
             {
                 edit_with_option(person, 1, "Nagar");
                 edit_flag = true;
                 break;
             }
-        }
         if (!edit_flag)
             cout << "\nNo such person exists !!!";
+    }
+
+    void delete_person(string first_name, string last_name)
+    {
+        bool delete_flag = false;
+        for (Person *person : address_book)
+            if (first_name == person->get_first_name() && last_name == person->get_last_name())
+            {
+                address_book.remove(person);
+                cout << "\nRecord deleted successfully !!!";
+                delete_flag = true;
+                break;
+            }
+        if (!delete_flag)
+            cout << "\nNo such record exists !!!";
     }
 
     void display_records()
@@ -104,6 +117,7 @@ void edit_with_option(Person *person, int edit_choice, string changed_value)
         person->phone_number = changed_value;
         break;
     default:
+        cout << "\nInvalid choice !!!";
         break;
     }
     cout << "\nEditing successful !!!";
@@ -119,13 +133,15 @@ int main(int argc, char const *argv[])
 
     address_book.add_person(&person1);
     address_book.add_person(&person2);
-
     address_book.display_records();
+
     address_book.edit_person("Sudhanshu", "Ghinmine");
-
     address_book.display_records();
 
-    address_book.edit_person("Sha", "Ghinm");
+    address_book.delete_person("Sudhanshu", "Ghinmine");
+    address_book.display_records();
+
+    address_book.edit_person("Sudhanshu", "Ghinmine");
 
     return 0;
 }
