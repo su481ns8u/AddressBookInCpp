@@ -115,3 +115,10 @@ bool Address_Book::check_present(string first_name, string last_name)
             return true;
     return false;
 }
+
+void Address_Book::sort_by_name()
+{
+    address_book.sort([](Person *lhs, Person *rhs) {
+        return lhs->get_first_name() < rhs->get_first_name();
+    });
+}

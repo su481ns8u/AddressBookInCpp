@@ -32,8 +32,8 @@ int main(int argc, char const *argv[])
     while (true)
     {
         cout << "\nEnter your choice\n1. Add Person\n"
-             << "2. Edit Person\n3. Delete Person\n4. Display\n"
-             << "5. Exit\nChoice: ";
+             << "2. Edit Person\n3. Delete Person\n4. Display\n5. Sort By Name\n"
+             << "6. Exit\nChoice: ";
         cin >> choice;
         switch (choice)
         {
@@ -87,6 +87,9 @@ int main(int argc, char const *argv[])
             address_book.display_records();
             break;
         case 5:
+            address_book.sort_by_name();
+            break;
+        case 6:
             exit(0);
             break;
         default:
