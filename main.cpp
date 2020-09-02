@@ -1,158 +1,97 @@
-#include <iostream>
-#include <list>
+#include "addressBook.h"
 
-using namespace std;
+// int main()
+// {
+//     Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
+//     Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
+//     Person person3("Shashank", "Joshi", "Kokan", "Mahabal", "Maha", "431005", "9175927280");
+//     Address_Book address_book;
 
-class Person
+//     cout << "Welcone to address book\n";
+
+//     address_book.add_person(&person1);
+//     address_book.add_person(&person2);
+//     address_book.display_records();
+
+//     address_book.edit_person("Sudhanshu", "Ghinmine");
+//     address_book.display_records();
+
+//     address_book.delete_person("Sudhanshu", "Ghinmine");
+//     address_book.display_records();
+
+//     address_book.edit_person("Sudhanshu", "Ghinmine");
+//     address_book.add_person(&person3);
+
+//     return 0;
+// }
+
+int main(int argc, char const *argv[])
 {
-    string first_name;
-    string last_name;
-    string address;
-    string city;
-    string state;
-    string zip;
-    string phone_number;
-
-public:
-    Person(string first_name, string last_name,
-           string address, string city,
-           string state, string zip, string phone_number)
-    {
-        this->first_name = first_name;
-        this->last_name = last_name;
-        this->address = address;
-        this->city = city;
-        this->state = state;
-        this->zip = zip;
-        this->phone_number = phone_number;
-    }
-
-    string get_first_name()
-    {
-        return first_name;
-    }
-
-    string get_last_name()
-    {
-        return last_name;
-    }
-
-    string to_string()
-    {
-        return "\nFirst Name: " + this->first_name +
-               "\tLast Name: " + this->last_name +
-               "\nAddress: " + this->address +
-               "\nCity: " + this->city +
-               "\tState: " + this->state +
-               "\tZip: " + this->zip +
-               "\nPhone number: " + this->phone_number + "\n";
-    }
-
-    friend void edit_with_option(Person *person, int edit_choice, string changed_value);
-};
-
-class Address_Book
-{
-    list<Person *> address_book;
-
-public:
-    void add_person(Person *person)
-    {
-        bool exist_flag = false;
-        for (Person *temp_person : address_book)
-            if (temp_person->get_first_name() == person->get_first_name() &&
-                temp_person->get_last_name() == person->get_last_name())
-            {
-                cout << "\nPerson Already Exists !!!";
-                exist_flag = true;
-            }
-        if (!exist_flag)
-            address_book.push_back(person);
-    }
-
-    void edit_person(string first_name, string last_name)
-    {
-        bool edit_flag = false;
-        for (Person *person : address_book)
-            if (first_name == person->get_first_name() && last_name == person->get_last_name())
-            {
-                edit_with_option(person, 1, "Nagar");
-                edit_flag = true;
-                break;
-            }
-        if (!edit_flag)
-            cout << "\nNo such person exists !!!";
-    }
-
-    void delete_person(string first_name, string last_name)
-    {
-        bool delete_flag = false;
-        for (Person *person : address_book)
-            if (first_name == person->get_first_name() && last_name == person->get_last_name())
-            {
-                address_book.remove(person);
-                cout << "\nRecord deleted successfully !!!";
-                delete_flag = true;
-                break;
-            }
-        if (!delete_flag)
-            cout << "\nNo such record exists !!!";
-    }
-
-    void display_records()
-    {
-        for (Person *person : address_book)
-            cout << person->to_string();
-    }
-};
-
-void edit_with_option(Person *person, int edit_choice, string changed_value)
-{
-    switch (edit_choice)
-    {
-    case 1:
-        person->address = changed_value;
-        break;
-    case 2:
-        person->city = changed_value;
-        break;
-    case 3:
-        person->state = changed_value;
-        break;
-    case 4:
-        person->zip = changed_value;
-        break;
-    case 5:
-        person->phone_number = changed_value;
-        break;
-    default:
-        cout << "\nInvalid choice !!!";
-        break;
-    }
-    cout << "\nEditing successful !!!";
-}
-
-int main()
-{
-    Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
-    Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
-    Person person3("Shashank", "Joshi", "Kokan", "Mahabal", "Maha", "431005", "9175927280");
+    int choice;
     Address_Book address_book;
-
-    cout << "Welcone to address book\n";
-
-    address_book.add_person(&person1);
-    address_book.add_person(&person2);
-    address_book.display_records();
-
-    address_book.edit_person("Sudhanshu", "Ghinmine");
-    address_book.display_records();
-
-    address_book.delete_person("Sudhanshu", "Ghinmine");
-    address_book.display_records();
-
-    address_book.edit_person("Sudhanshu", "Ghinmine");
-    address_book.add_person(&person3);
-
+    while (true)
+    {
+        cout << "\nEnter your choice\n1. Add Person\n"
+             << "2. Edit Person\n3. Delete Person\n4. Display\n"
+             << "5. Exit\nChoice: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+        {
+            // string first_name, last_name, address, city, state, zip, phone_number;
+            // cout << "Enter Information to add\nEnter First Name: ";
+            // cin >> first_name;
+            // cout << "Enter Last Name: ";
+            // cin >> last_name;
+            // cout << "Enter Address: ";
+            // cin >> address;
+            // cout << "Enter City: ";
+            // cin >> city;
+            // cout << "Enter State: ";
+            // cin >> state;
+            // cout << "Enter Zip: ";
+            // cin >> zip;
+            // cout << "Enter Phone Number: ";
+            // cin >> phone_number;
+            // address_book.add_person(new Person(first_name, last_name,
+            //                                    address, city,
+            //                                    state, zip,
+            //                                    phone_number));
+            Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
+            Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
+            address_book.add_person(&person1);
+            address_book.add_person(&person2);
+            break;
+        }
+        case 2:
+        {
+            string first_name, last_name;
+            cout << "Enter Information to Edit\nFirst Name: ";
+            cin >> first_name;
+            cout << "Last Name: ";
+            cin >> last_name;
+            address_book.edit_person(first_name, last_name);
+            break;
+        }
+        case 3:
+        {
+            string first_name, last_name;
+            cout << "Enter Information to Delete\nFirst Name: ";
+            cin >> first_name;
+            cout << "Last Name: ";
+            cin >> last_name;
+            address_book.delete_person(first_name, last_name);
+        }
+        case 4:
+            address_book.display_records();
+            break;
+        case 5:
+            exit(0);
+            break;
+        default:
+            break;
+        }
+    }
     return 0;
 }
