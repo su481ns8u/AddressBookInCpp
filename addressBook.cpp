@@ -145,3 +145,16 @@ void Address_Book::sort_by_param(int sort_param)
         break;
     }
 }
+
+void Address_Book::view_by_city_and_state(string city, string state)
+{
+    bool view_flag = false;
+    for (Person *person : address_book)
+        if (person->get_city() == city && person->get_state() == state)
+        {
+            cout << person->to_string();
+            view_flag = true;
+        }
+    if (!view_flag)
+        cout << "No records found !!!";
+}

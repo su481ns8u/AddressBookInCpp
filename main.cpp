@@ -7,8 +7,10 @@ int main(int argc, char const *argv[])
     while (true)
     {
         cout << "\nEnter your choice\n1. Add Person\n"
-             << "2. Edit Person\n3. Delete Person\n4. Display\n5. Sort By Name\n"
-             << "6. Exit\nChoice: ";
+             << "2. Edit Person\n3. Delete Person\n"
+             << "4. Display\n5. Sort By Name\n"
+             << "6. Sort by city and state\n"
+             << "7. Exit\nChoice: ";
         cin >> choice;
         switch (choice)
         {
@@ -72,6 +74,16 @@ int main(int argc, char const *argv[])
             break;
         }
         case 6:
+        {
+            string city, state;
+            cout << "Enter city: ";
+            cin >> city;
+            cout << "Enter state: ";
+            cin >> state;
+            address_book.view_by_city_and_state(city, state);
+            break;
+        }
+        case 7:
             exit(0);
             break;
         default:

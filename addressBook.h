@@ -18,7 +18,7 @@ public:
            string address, string city,
            string state, string zip,
            string phone_number);
-    
+
     string get_first_name();
     string get_last_name();
 
@@ -27,7 +27,7 @@ public:
     string get_state();
     string get_zip();
     string get_phone_number();
-    
+
     void set_address(string address);
     void set_city(string city);
     void set_state(string state);
@@ -48,4 +48,5 @@ public:
     void display_records();
     bool check_present(string first_name, string last_name);
     void sort_by_param(int param);
+    void view_by_city_and_state(string city, string state);
 };
