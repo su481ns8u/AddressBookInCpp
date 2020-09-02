@@ -49,4 +49,5 @@ public:
     bool check_present(string first_name, string last_name);
     void sort_by_param(int param);
     void view_by_city_and_state(string city, string state);
+    void view_by_city_or_state(string param);
 };

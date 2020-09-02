@@ -158,3 +158,16 @@ void Address_Book::view_by_city_and_state(string city, string state)
     if (!view_flag)
         cout << "No records found !!!";
 }
+
+void Address_Book::view_by_city_or_state(string param)
+{
+    bool view_flag = false;
+    for (Person *person : address_book)
+        if (person->get_city() == param || person->get_state() == param)
+        {
+            cout << person->to_string();
+            view_flag = true;
+        }
+    if (!view_flag)
+        cout << "No records found !!!";
+}

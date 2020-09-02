@@ -9,8 +9,8 @@ int main(int argc, char const *argv[])
         cout << "\nEnter your choice\n1. Add Person\n"
              << "2. Edit Person\n3. Delete Person\n"
              << "4. Display\n5. Sort By Name\n"
-             << "6. Sort by city and state\n"
-             << "7. Exit\nChoice: ";
+             << "6. View by city AND state\n7. View By city OR state\n"
+             << "8. Exit\nChoice: ";
         cin >> choice;
         switch (choice)
         {
@@ -84,6 +84,14 @@ int main(int argc, char const *argv[])
             break;
         }
         case 7:
+        {
+            string param;
+            cout << "Enter city or state: ";
+            cin >> param;
+            address_book.view_by_city_or_state(param);
+            break;
+        }
+        case 8:
             exit(0);
             break;
         default:
