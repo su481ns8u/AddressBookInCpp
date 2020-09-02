@@ -16,6 +16,7 @@ int main(int argc, char const *argv[])
         {
         case 1:
         {
+            system("clear");
             string first_name, last_name, address, city, state, zip, phone_number;
             cout << "Enter Information to add\nEnter First Name: ";
             cin >> first_name;
@@ -39,6 +40,7 @@ int main(int argc, char const *argv[])
         }
         case 2:
         {
+            system("clear");
             string first_name, last_name;
             cout << "Enter Information to Edit\nFirst Name: ";
             cin >> first_name;
@@ -49,6 +51,7 @@ int main(int argc, char const *argv[])
         }
         case 3:
         {
+            system("clear");
             string first_name, last_name;
             cout << "Enter Information to Delete\nFirst Name: ";
             cin >> first_name;
@@ -57,10 +60,12 @@ int main(int argc, char const *argv[])
             address_book.delete_person(first_name, last_name);
         }
         case 4:
+            system("clear");
             address_book.display_records();
             break;
         case 5:
         {
+            system("clear");
             int sort_param;
             cout << "\n\tEnter sort parameter\n\t1. Name"
                  << "\n\t2. City\n\t3. State"
@@ -71,6 +76,7 @@ int main(int argc, char const *argv[])
         }
         case 6:
         {
+            system("clear");
             string city, state;
             cout << "Enter city: ";
             cin >> city;
@@ -81,6 +87,7 @@ int main(int argc, char const *argv[])
         }
         case 7:
         {
+            system("clear");
             string param;
             cout << "Enter city or state: ";
             cin >> param;
@@ -88,9 +95,11 @@ int main(int argc, char const *argv[])
             break;
         }
         case 8:
+            system("clear");
             exit(0);
             break;
         default:
+            cout << "\nInvalid choice !!!";
             break;
         }
     }

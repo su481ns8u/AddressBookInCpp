@@ -1,4 +1,4 @@
 all:
-	g++ person.cpp addressBook.cpp main.cpp -o AddressBookApplication.exe
-	./AddressBookApplication.exe
-	rm AddressBookApplication.exe
+	g++ person.cpp address_book.cpp main.cpp -o Address_Book_Application.exe
+	./Address_Book_Application.exe
+	rm Address_Book_Application.exe

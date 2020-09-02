@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "addressBook.h"
 
 bool Address_Book::check_present(string first_name, string last_name)
