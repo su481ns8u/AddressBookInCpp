@@ -1,30 +1,5 @@
 #include "addressBook.h"
 
-// int main()
-// {
-//     Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
-//     Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
-//     Person person3("Shashank", "Joshi", "Kokan", "Mahabal", "Maha", "431005", "9175927280");
-//     Address_Book address_book;
-
-//     cout << "Welcone to address book\n";
-
-//     address_book.add_person(&person1);
-//     address_book.add_person(&person2);
-//     address_book.display_records();
-
-//     address_book.edit_person("Sudhanshu", "Ghinmine");
-//     address_book.display_records();
-
-//     address_book.delete_person("Sudhanshu", "Ghinmine");
-//     address_book.display_records();
-
-//     address_book.edit_person("Sudhanshu", "Ghinmine");
-//     address_book.add_person(&person3);
-
-//     return 0;
-// }
-
 int main(int argc, char const *argv[])
 {
     int choice;
@@ -87,8 +62,15 @@ int main(int argc, char const *argv[])
             address_book.display_records();
             break;
         case 5:
-            address_book.sort_by_name();
+        {
+            int sort_param;
+            cout << "\n\tEnter sort parameter\n\t1. Name"
+                 << "\n\t2. City\n\t3. State"
+                 << "\n\t4. Zip\n\tChoice:";
+            cin >> sort_param;
+            address_book.sort_by_param(sort_param);
             break;
+        }
         case 6:
             exit(0);
             break;

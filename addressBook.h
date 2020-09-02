@@ -47,5 +47,5 @@ public:
     void delete_person(string first_name, string last_name);
     void display_records();
     bool check_present(string first_name, string last_name);
-    void sort_by_name();
+    void sort_by_param(int param);
 };

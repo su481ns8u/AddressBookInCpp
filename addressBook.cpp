@@ -116,9 +116,32 @@ bool Address_Book::check_present(string first_name, string last_name)
     return false;
 }
 
-void Address_Book::sort_by_name()
+void Address_Book::sort_by_param(int sort_param)
 {
-    address_book.sort([](Person *lhs, Person *rhs) {
-        return lhs->get_first_name() < rhs->get_first_name();
-    });
+    switch (sort_param)
+    {
+    case 1:
+        address_book.sort([](Person *lhs, Person *rhs) {
+            return lhs->get_first_name() < rhs->get_first_name();
+        });
+        break;
+    case 2:
+        address_book.sort([](Person *lhs, Person *rhs) {
+            return lhs->get_city() < rhs->get_city();
+        });
+        break;
+    case 3:
+        address_book.sort([](Person *lhs, Person *rhs) {
+            return lhs->get_state() < rhs->get_state();
+        });
+        break;
+    case 4:
+        address_book.sort([](Person *lhs, Person *rhs) {
+            return lhs->get_zip() < rhs->get_zip();
+        });
+        break;
+    default:
+        cout << "Invalid Choice !!!";
+        break;
+    }
 }
