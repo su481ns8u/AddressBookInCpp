@@ -40,13 +40,13 @@ public:
 class Address_Book
 {
     list<Person *> address_book;
+    bool check_present(string first_name, string last_name);
 
 public:
     void add_person(Person *person);
     void edit_person(string first_name, string last_name);
     void delete_person(string first_name, string last_name);
     void display_records();
-    bool check_present(string first_name, string last_name);
     void sort_by_param(int param);
     void view_by_city_and_state(string city, string state);
     void view_by_city_or_state(string param);

@@ -1,11 +1,19 @@
 #include "addressBook.h"
 
+bool Address_Book::check_present(string first_name, string last_name)
+{
+    for (Person *person : address_book)
+        if (person->get_first_name() == first_name && person->get_last_name() == last_name)
+            return true;
+    return false;
+}
+
 void Address_Book::add_person(Person *person)
 {
     if (!check_present(person->get_first_name(), person->get_last_name()))
         address_book.push_back(person);
     else
-        cout << "Person already exists !!!";
+        cout << "\nPerson already exists !!!";
 }
 
 void Address_Book::edit_person(string first_name, string last_name)
@@ -82,7 +90,7 @@ void Address_Book::edit_person(string first_name, string last_name)
     }
     else
     {
-        cout << "No such person exists !!!";
+        cout << "\nNo such person exists !!!";
     }
 }
 
@@ -99,51 +107,49 @@ void Address_Book::delete_person(string first_name, string last_name)
             }
         }
     else
-        cout << "No such person exists !!!";
+        cout << "\nNo such person exists !!!";
 }
 
 void Address_Book::display_records()
 {
-    for (Person *person : address_book)
-        cout << person->to_string();
-}
-
-bool Address_Book::check_present(string first_name, string last_name)
-{
-    for (Person *person : address_book)
-        if (person->get_first_name() == first_name && person->get_last_name() == last_name)
-            return true;
-    return false;
+    if (address_book.size() != 0)
+        for (Person *person : address_book)
+            cout << person->to_string();
+    else
+        cout << "\nNo records found!!!";
 }
 
 void Address_Book::sort_by_param(int sort_param)
 {
-    switch (sort_param)
-    {
-    case 1:
-        address_book.sort([](Person *lhs, Person *rhs) {
-            return lhs->get_first_name() < rhs->get_first_name();
-        });
-        break;
-    case 2:
-        address_book.sort([](Person *lhs, Person *rhs) {
-            return lhs->get_city() < rhs->get_city();
-        });
-        break;
-    case 3:
-        address_book.sort([](Person *lhs, Person *rhs) {
-            return lhs->get_state() < rhs->get_state();
-        });
-        break;
-    case 4:
-        address_book.sort([](Person *lhs, Person *rhs) {
-            return lhs->get_zip() < rhs->get_zip();
-        });
-        break;
-    default:
-        cout << "Invalid Choice !!!";
-        break;
-    }
+    if (address_book.size() != 0)
+        switch (sort_param)
+        {
+        case 1:
+            address_book.sort([](Person *lhs, Person *rhs) {
+                return lhs->get_first_name() < rhs->get_first_name();
+            });
+            break;
+        case 2:
+            address_book.sort([](Person *lhs, Person *rhs) {
+                return lhs->get_city() < rhs->get_city();
+            });
+            break;
+        case 3:
+            address_book.sort([](Person *lhs, Person *rhs) {
+                return lhs->get_state() < rhs->get_state();
+            });
+            break;
+        case 4:
+            address_book.sort([](Person *lhs, Person *rhs) {
+                return lhs->get_zip() < rhs->get_zip();
+            });
+            break;
+        default:
+            cout << "\nInvalid Choice !!!";
+            break;
+        }
+    else
+        cout << "\nNo records found to sort!!!";
 }
 
 void Address_Book::view_by_city_and_state(string city, string state)
@@ -156,7 +162,7 @@ void Address_Book::view_by_city_and_state(string city, string state)
             view_flag = true;
         }
     if (!view_flag)
-        cout << "No records found !!!";
+        cout << "\nNo records found !!!";
 }
 
 void Address_Book::view_by_city_or_state(string param)
@@ -169,5 +175,5 @@ void Address_Book::view_by_city_or_state(string param)
             view_flag = true;
         }
     if (!view_flag)
-        cout << "No records found !!!";
+        cout << "\nNo records found !!!";
 }
