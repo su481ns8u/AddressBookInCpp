@@ -16,29 +16,25 @@ int main(int argc, char const *argv[])
         {
         case 1:
         {
-            // string first_name, last_name, address, city, state, zip, phone_number;
-            // cout << "Enter Information to add\nEnter First Name: ";
-            // cin >> first_name;
-            // cout << "Enter Last Name: ";
-            // cin >> last_name;
-            // cout << "Enter Address: ";
-            // cin >> address;
-            // cout << "Enter City: ";
-            // cin >> city;
-            // cout << "Enter State: ";
-            // cin >> state;
-            // cout << "Enter Zip: ";
-            // cin >> zip;
-            // cout << "Enter Phone Number: ";
-            // cin >> phone_number;
-            // address_book.add_person(new Person(first_name, last_name,
-            //                                    address, city,
-            //                                    state, zip,
-            //                                    phone_number));
-            Person person1("Sudhanshu", "Ghinmine", "Keshava", "Selu", "Maha", "431503", "8551973494");
-            Person person2("Shashank", "Joshi", "Keshava", "Murtizapur", "Maha", "431225", "9822917991");
-            address_book.add_person(&person1);
-            address_book.add_person(&person2);
+            string first_name, last_name, address, city, state, zip, phone_number;
+            cout << "Enter Information to add\nEnter First Name: ";
+            cin >> first_name;
+            cout << "Enter Last Name: ";
+            cin >> last_name;
+            cout << "Enter Address: ";
+            cin >> address;
+            cout << "Enter City: ";
+            cin >> city;
+            cout << "Enter State: ";
+            cin >> state;
+            cout << "Enter Zip: ";
+            cin >> zip;
+            cout << "Enter Phone Number: ";
+            cin >> phone_number;
+            address_book.add_person(new Person(first_name, last_name,
+                                               address, city,
+                                               state, zip,
+                                               phone_number));
             break;
         }
         case 2:
