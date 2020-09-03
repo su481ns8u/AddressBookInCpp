@@ -29,10 +29,10 @@ void Address_Book::edit_person(string first_name, string last_name)
                 bool stop_flag = false;
                 while (!stop_flag)
                 {
-                    cout << "\nEnter edit choice\n1. Address"
-                         << "\n2. City\n3. State"
-                         << "\n4. Zip\n5. Phone Number"
-                         << "\n6. Exit Editing\nChoice: ";
+                    cout << "\n\tEnter edit choice\n\t1. Address"
+                         << "\n\t2. City\n\t3. State"
+                         << "\n\t4. Zip\n\t5. Phone Number"
+                         << "\n\t6. Exit Editing\n\tChoice: ";
                     cin >> edit_choice;
                     switch (edit_choice)
                     {
