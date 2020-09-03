@@ -43,7 +43,8 @@ void edit_person()
     address_book.edit_person(first_name, last_name);
 }
 
-void delete_person() {
+void delete_person()
+{
     system("clear");
     string first_name, last_name;
     cout << "Enter Information to Delete\nFirst Name: ";
@@ -53,7 +54,8 @@ void delete_person() {
     address_book.delete_person(first_name, last_name);
 }
 
-void sort_records() {
+void sort_records()
+{
     system("clear");
     int sort_param;
     cout << "\n\tEnter sort parameter\n\t1. Name"
@@ -63,7 +65,8 @@ void sort_records() {
     address_book.sort_by_param(sort_param);
 }
 
-void view_by_city_and_state() {
+void view_by_city_and_state()
+{
     system("clear");
     string city, state;
     cout << "Enter city: ";
@@ -73,7 +76,8 @@ void view_by_city_and_state() {
     address_book.view_by_city_and_state(city, state);
 }
 
-void view_by_city_or_state() {
+void view_by_city_or_state()
+{
     system("clear");
     string param;
     cout << "Enter city or state: ";
