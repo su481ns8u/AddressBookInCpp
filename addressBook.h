@@ -14,10 +14,9 @@ class Person
     string phone_number;
 
 public:
-    Person(string first_name, string last_name,
-           string address, string city,
-           string state, string zip,
-           string phone_number);
+    Person(string first_name, string last_name);
+    void set_address_and_phone(string address, string phone);
+    void set_location(string city, string state, string zip);
 
     string get_first_name();
     string get_last_name();
@@ -40,9 +39,9 @@ public:
 class Address_Book
 {
     list<Person *> address_book;
-    bool check_present(string first_name, string last_name);
 
 public:
+    bool check_present(Person *person);
     void add_person(Person *person);
     void edit_person(string first_name, string last_name);
     void delete_person(string first_name, string last_name);

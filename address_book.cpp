@@ -1,25 +1,30 @@
 #include <cstdlib>
 #include "addressBook.h"
 
-bool Address_Book::check_present(string first_name, string last_name)
+bool Address_Book::check_present(Person *person)
 {
-    for (Person *person : address_book)
-        if (person->get_first_name() == first_name && person->get_last_name() == last_name)
+    for (Person *temp_person : address_book)
+        if (temp_person->get_first_name() == person->get_first_name() && temp_person->get_last_name() == person->get_last_name())
             return true;
     return false;
 }
 
 void Address_Book::add_person(Person *person)
 {
-    if (!check_present(person->get_first_name(), person->get_last_name()))
         address_book.push_back(person);
-    else
-        cout << "\nPerson already exists !!!";
 }
 
 void Address_Book::edit_person(string first_name, string last_name)
 {
-    if (check_present(first_name, last_name))
+    enum edit_params
+    {
+        ADDRESS = 1,
+        CITY,
+        STATE,
+        ZIP,
+        PHONE
+    };
+    if (check_present(new Person(first_name, last_name)))
     {
         for (Person *person : address_book)
         {
@@ -36,7 +41,7 @@ void Address_Book::edit_person(string first_name, string last_name)
                     cin >> edit_choice;
                     switch (edit_choice)
                     {
-                    case 1:
+                    case ADDRESS:
                     {
                         string address;
                         cout << "Address: ";
@@ -44,7 +49,7 @@ void Address_Book::edit_person(string first_name, string last_name)
                         person->set_address(address);
                         break;
                     }
-                    case 2:
+                    case CITY:
                     {
                         string city;
                         cout << "City: ";
@@ -52,7 +57,7 @@ void Address_Book::edit_person(string first_name, string last_name)
                         person->set_city(city);
                         break;
                     }
-                    case 3:
+                    case STATE:
                     {
                         string state;
                         cout << "State: ";
@@ -60,7 +65,7 @@ void Address_Book::edit_person(string first_name, string last_name)
                         person->set_state(state);
                         break;
                     }
-                    case 4:
+                    case ZIP:
                     {
                         string zip;
                         cout << "Zip: ";
@@ -68,7 +73,7 @@ void Address_Book::edit_person(string first_name, string last_name)
                         person->set_zip(zip);
                         break;
                     }
-                    case 5:
+                    case PHONE:
                     {
                         string phone_number;
                         cout << "Phone Number: ";
@@ -84,9 +89,9 @@ void Address_Book::edit_person(string first_name, string last_name)
                         break;
                     }
                 }
+                cout << "\nEditing successful !!!";
+                break;
             }
-            cout << "\nEditing successful !!!";
-            break;
         }
     }
     else
@@ -97,7 +102,7 @@ void Address_Book::edit_person(string first_name, string last_name)
 
 void Address_Book::delete_person(string first_name, string last_name)
 {
-    if (check_present(first_name, last_name))
+    if (check_present(new Person(first_name, last_name)))
         for (Person *person : address_book)
         {
             if (first_name == person->get_first_name() && last_name == person->get_last_name())
@@ -122,25 +127,32 @@ void Address_Book::display_records()
 
 void Address_Book::sort_by_param(int sort_param)
 {
+    enum sort_params
+    {
+        NAME = 1,
+        CITY,
+        STATE,
+        ZIP
+    };
     if (address_book.size() != 0)
         switch (sort_param)
         {
-        case 1:
+        case NAME:
             address_book.sort([](Person *lhs, Person *rhs) {
                 return lhs->get_first_name() < rhs->get_first_name();
             });
             break;
-        case 2:
+        case CITY:
             address_book.sort([](Person *lhs, Person *rhs) {
                 return lhs->get_city() < rhs->get_city();
             });
             break;
-        case 3:
+        case STATE:
             address_book.sort([](Person *lhs, Person *rhs) {
                 return lhs->get_state() < rhs->get_state();
             });
             break;
-        case 4:
+        case ZIP:
             address_book.sort([](Person *lhs, Person *rhs) {
                 return lhs->get_zip() < rhs->get_zip();
             });
