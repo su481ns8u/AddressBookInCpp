@@ -4,6 +4,8 @@ int main(int argc, char const *argv[])
 {
     int choice;
     Address_Book address_book;
+    system("clear");
+    cout << "<-- Welcome to address book program -->";
     while (true)
     {
         cout << "\nEnter your choice\n1. Add Person\n"
@@ -22,20 +24,23 @@ int main(int argc, char const *argv[])
             cin >> first_name;
             cout << "Enter Last Name: ";
             cin >> last_name;
+            Person person(first_name, last_name);
             cout << "Enter Address: ";
             cin >> address;
+            person.set_address(address);
             cout << "Enter City: ";
             cin >> city;
+            person.set_city(city);
             cout << "Enter State: ";
             cin >> state;
+            person.set_state(state);
             cout << "Enter Zip: ";
             cin >> zip;
+            person.set_zip(zip);
             cout << "Enter Phone Number: ";
             cin >> phone_number;
-            address_book.add_person(new Person(first_name, last_name,
-                                               address, city,
-                                               state, zip,
-                                               phone_number));
+            person.set_phone_number(phone_number);
+            address_book.add_person(&person);
             break;
         }
         case 2:
@@ -96,7 +101,7 @@ int main(int argc, char const *argv[])
         }
         case 8:
             system("clear");
-            exit(0);
+            return 0;
             break;
         default:
             cout << "\nInvalid choice !!!";

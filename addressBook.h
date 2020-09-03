@@ -14,10 +14,7 @@ class Person
     string phone_number;
 
 public:
-    Person(string first_name, string last_name,
-           string address, string city,
-           string state, string zip,
-           string phone_number);
+    Person(string first_name, string last_name);
 
     string get_first_name();
     string get_last_name();

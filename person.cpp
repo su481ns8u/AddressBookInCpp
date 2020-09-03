@@ -1,16 +1,9 @@
 #include "addressBook.h"
 
-Person::Person(string first_name, string last_name,
-               string address, string city,
-               string state, string zip, string phone_number)
+Person::Person(string first_name, string last_name)
 {
     this->first_name = first_name;
     this->last_name = last_name;
-    this->address = address;
-    this->city = city;
-    this->state = state;
-    this->zip = zip;
-    this->phone_number = phone_number;
 }
 
 string Person::get_first_name()
