@@ -40,7 +40,31 @@ void edit_person()
     cin >> first_name;
     cout << "Last Name: ";
     cin >> last_name;
-    address_book.edit_person(first_name, last_name);
+    Person *person = address_book.check_present(new Person(first_name, last_name));
+    if (person != nullptr)
+    {
+        int edit_param;
+        while (edit_param != 6)
+        {
+            cout << "\nEnter edit choice\n1. Address"
+                 << "\n2. City\n3. State"
+                 << "\n4. Zip\n5. Phone Number"
+                 << "\n6. Exit Editing\nChoice: ";
+            cin >> edit_param;
+            if (edit_param < 6 && edit_param > 0)
+            {
+                string changed_value;
+                cout << "Changed Value: ";
+                cin >> changed_value;
+                address_book.edit_person(person, edit_param, changed_value);
+            }
+        }
+        cout << "Editing Successful !!!";
+    }
+    else
+    {
+        cout << "Person not exists !!!";
+    }
 }
 
 void delete_person()

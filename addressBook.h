@@ -41,9 +41,10 @@ class Address_Book
     list<Person *> address_book;
 
 public:
-    bool check_present(Person *person);
+    Person *check_present(Person *person);
     void add_person(Person *person);
     void edit_person(string first_name, string last_name);
+    void edit_person(Person *preson, int edit_param, string changed_value);
     void delete_person(string first_name, string last_name);
     void display_records();
     void sort_by_param(int param);
